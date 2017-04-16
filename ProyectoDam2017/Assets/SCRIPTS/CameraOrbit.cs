@@ -9,7 +9,7 @@ using UnityEngine;
 public class CameraOrbit : MonoBehaviour {
 
     public Transform player;
-	private Transform enemy;
+	private GameObject enemy;
 	[Header ("Orbit")]
     public float distance = 5.0f;
     public float height = 1.5f;
@@ -69,7 +69,7 @@ public class CameraOrbit : MonoBehaviour {
 				Vector3 position = player.position + player.TransformDirection(new Vector3 (1,1,1) + cameraOffset);
 				transform.position = Vector3.Lerp (transform.position, position, Time.deltaTime * 5);
 
-				transform.LookAt (enemy.position + Vector3.up * enemyHeightOffset);
+				transform.LookAt (enemy.transform.position + Vector3.up * enemyHeightOffset);
 
 			} 
 		}

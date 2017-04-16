@@ -12,15 +12,12 @@ public class CS_Spell : MonoBehaviour {
 
 	public SPELL_TYPE spellType;
 
+	[Header ("Modifiers")]
+	public float health;
+	public float strenght;
+	public float stamina;
 
-	void Start(){
-		switch (spellType) {
-		case SPELL_TYPE.self:
-			GetComponent <Animator> ().SetFloat ("spellSelector", 0);
-			break;
-		case SPELL_TYPE.area:
-			GetComponent <Animator> ().SetFloat ("spellSelector", 1);
-			break;
-		}
-	}
+	public float area;
+
+
 }

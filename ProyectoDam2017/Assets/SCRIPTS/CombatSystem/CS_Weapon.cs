@@ -32,7 +32,6 @@ public class CS_Weapon : MonoBehaviour {
 			if (makeDamage) {
 				damage (obj);
 				rateTimer = 0;
-				Debug.Log ("EnemigoTocado");
 			}
 		}	
 	}

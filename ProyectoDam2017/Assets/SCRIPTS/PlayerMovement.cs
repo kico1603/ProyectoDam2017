@@ -8,16 +8,13 @@ using UnityEngine;
 
 
 public class PlayerMovement : GameCharacter {
-
-	[Header ("Player Movement")]
-	public Transform lockedEnemy;
-
+	[HideInInspector]
+	public GameObject lockedEnemy;
+	[HideInInspector]
 	public bool lookAtEnemy;
 
-
-
-	public float comboTimer = 0;
-	public bool continueCombo = false;
+	private float comboTimer = 0;
+	private bool continueCombo = false;
 
 	// Update is called once per frame
 	void Update () {
@@ -61,7 +58,7 @@ public class PlayerMovement : GameCharacter {
 
 
 		if (Input.GetButtonDown ("LockEnemy")) {
-			lockedEnemy = closestObject ("EnemyRoot").transform;
+			lockedEnemy = closestObject ("EnemyRoot");
 
 			if (lockedEnemy)
 				lookAtEnemy = !lookAtEnemy;
@@ -74,12 +71,14 @@ public class PlayerMovement : GameCharacter {
 
 		if (lookAtEnemy) {
 			if (lockedEnemy) {
+				
+				if (!isInAnimatorState (0, "Attack")) {
+					transform.LookAt(new Vector3(lockedEnemy.transform.position.x, transform.position.y, lockedEnemy.transform.position.z));
+				}
+
 				if (lockedEnemy.tag == "Untagged") {
 					lookAtEnemy = false;
 					lockedEnemy = null;
-				}
-				if (!isInAnimatorState (0, "Attack")) {
-					transform.LookAt(new Vector3(lockedEnemy.transform.position.x, transform.position.y, lockedEnemy.transform.position.z));
 				}
 			}
 

@@ -15,13 +15,15 @@ public abstract class GameCharacter : MonoBehaviour {
 
 
 	[Header ("Estadisticas")]
-	[Range(0,100)]
-	public float health;
-	[Range(0, 100)]
-	public float strenght;
+	public float maxHealth;
+	public float maxStrenght;
+	public float maxStamina;
 
-	[Header ("Combate")]
-	public string enemyTag = "Untagged";
+	public float currentHealth;
+	public float currentStrenght;
+	public float currentStamina;
+
+
 
 
 
@@ -75,11 +77,11 @@ public abstract class GameCharacter : MonoBehaviour {
 		if (checkBlock (info.getAttacker().transform)) {
 			animator.SetTrigger ("shieldImpact");
 		} else {
-			health -= info.getDamage();
+			currentHealth -= info.getDamage();
 
 			GetComponent <GameCharacterSounds> ().hitSound ();
 
-			if (health <= 0) {
+			if (currentHealth <= 0) {
 				death ();
 			} else {
 				animator.SetTrigger ("stunt");
