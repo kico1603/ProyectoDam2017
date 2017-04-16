@@ -40,11 +40,4 @@ public class CS_Weapon : MonoBehaviour {
 		obj.SendMessage ("receiveDamage", new DamageInfo (owner.gameObject, weaponDamage), SendMessageOptions.DontRequireReceiver);
 	}
 		
-	/*
-	void OnTriggerEnter (Collider other)
-	{
-		if (other.tag == targetTag && makeDamage) {
-			damage (other);
-		}
-	}*/
 }
