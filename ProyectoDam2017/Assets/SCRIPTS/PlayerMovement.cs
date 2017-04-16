@@ -38,8 +38,10 @@ public class PlayerMovement : GameCharacter {
 			}
 		}
 
-		if (Input.GetButtonDown ("Spell"))
+		if (Input.GetButtonDown ("Spell")) {
 			animator.SetTrigger ("spell");
+
+		}
 		
 		if (isInAttack) {
 			AnimatorStateInfo currentState = animator.GetCurrentAnimatorStateInfo (0);
